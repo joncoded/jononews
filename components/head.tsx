@@ -26,17 +26,17 @@ export default function Head() {
   }
 
   return (
-    <header className="head-wrap bg-gray-700 text-white w-full sticky top-0 z-40 p-5">
-      <div className="head-prop max-w-screen-xl mx-auto flex justify-between items-center">
+    <header className="head-wrap bg-black text-white w-full block md:sticky top-0 z-40 p-5">
+      <div className="head-prop max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center gap-5">
       
-        <div className="head-name">
+        <div className="head-name flex items-center gap-5">
           <h1 className="head-ding text-4xl">
             <Link href="/">JONONEWS</Link>            
           </h1>
           <div className="head-line text-md block">search news/blog articles</div>
         </div>
       
-        <div className="head-navi flex gap-10">
+        <div className="head-navi flex flex-col sm:flex-row gap-5">
           
           <div className="head-find">
             <form onSubmit={handleSubmit}>
@@ -51,7 +51,7 @@ export default function Head() {
           </select>
 
         </div>
-        
+
       </div>
     </header>
   )

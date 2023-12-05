@@ -1,9 +1,10 @@
 import { MainDiv } from "../components/main"
 import Link from "next/link"
 
-async function getData(query: string) {
+async function getData(query: string = '', page: number = 0) {
 
-  const url = `https://hn.algolia.com/api/v1/search_by_date?tags=story&query=${query}`
+  
+  const url = `https://hn.algolia.com/api/v1/search_by_date?tags=story&query=${query}&page=${page}`
   const res = await fetch(url)
 
   if (!res.ok) {
@@ -16,45 +17,72 @@ async function getData(query: string) {
 
 interface MainProps {
   searchParams: {
-    query: string
+    query?: string,
+    page?: number
   }
 }
 
 export default async function Main({searchParams}: MainProps) {
 
-  const { query } = searchParams    
-  const data = await getData(query)
+  const { query, page } = searchParams    
+  const data = await getData(query, page)  
 
   const getURLHost = (url) => {
     return (url) ? new URL(url).host.toString() : ''
   }
 
+  const queryLabel = (query === undefined || query === 'undefined') ? '' : query
+  const newerPage = page ? Number(page) - 1 : null
+  const olderPage = page ? Number(page) + 1 : 2
+
   return (
-    <MainDiv>
-      
-      <h2>The latest</h2>
-      
-      <div className="main-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-        {data.hits.map(hit => 
-      
-          <article className="main-item mt-10" key={hit.objectID}>
+    <>
 
-            <aside className="main-date text-gray-500 text-sm">
-              {`${hit.created_at.substring(0,10)} ${hit.created_at.substring(11,16)}`} 
-            </aside>
-            
-            <p className="main-host">via {getURLHost(hit.url)}</p>
-            
-            <h3 className="main-link text-3xl">
-              <Link href={hit.url ? hit.url : ''} target="_blank">{hit.title}</Link>
-            </h3>            
-            
-          </article>
+      <nav className="sticky z-40 p-5 bg-green-500 w-full shadow-xl">
+        <div className="max-w-screen-xl mx-auto">
+          <div className="flex justify-between items-center gap-5">
+            <h2 className="text-md md:text-5xl text-black font-bold uppercase">
+              {queryLabel} 
+              {page ? ` / ${page} ` : ''}
+            </h2>
+            <div className="flex gap-5">
+              { newerPage && <Link href={`?query=${query}&page=${newerPage}`}>newer</Link>}
+              { olderPage && <Link href={`?query=${query}&page=${olderPage}`}>older</Link>}
+            </div>
+          </div>
+        </div>
+      </nav>
+    
+      <MainDiv>  
+        
+        <div className="main-list grid grid-cols-1 gap-1">
+          {data.hits.map(hit =>                   
 
-        )}
-      </div>
+            <article className="main-item mt-5" key={hit.objectID}>
 
-    </MainDiv>
+              <aside className="main-date text-gray-700 text-sm">
+                {`${hit.created_at.substring(0,10)} ${hit.created_at.substring(11,16)}`} 
+                {hit.url && <span className="main-host ml-1 text-gray-400">via {getURLHost(hit.url)}</span>}
+              </aside>
+                                              
+              <h3 className="main-link text-3xl lowercase">
+                <Link href={hit.url ?? ''} target="_blank">{hit.title}</Link>
+              </h3>            
+              
+            </article>            
+
+          )}
+
+          {data.hits.length === 0 && (
+
+            <p>no items or end of file</p>
+
+          )}
+        </div>
+
+      </MainDiv>
+
+    </>
   )
 
 }

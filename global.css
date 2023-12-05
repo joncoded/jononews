@@ -14,13 +14,13 @@ h1, h2, h3, h4, h5, h6, select, aside {
   font-family: 'Barlow Condensed', sans-serif;
 }
 
-h2, h3, h4, h5, h6, p, ul {
-  margin-top: 0.5rem;
-}
-
 ul {
   list-style: disc;
   margin: 1rem 2rem;
+}
+
+main {
+  scroll-padding-top: 4rem;
 }
 
 main a {
