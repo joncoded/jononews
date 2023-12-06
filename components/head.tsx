@@ -10,10 +10,10 @@ export default function Head() {
   const router = useRouter()
   const [searchTerm, setSearchTerm] = useState('')
 
-  const handleMenuChange = (e: any) => {
-    e.preventDefault()
-    if (e.target.value)
-      router.push(e.target.value)
+  const handleMenuChange = (event: any) => {
+    event.preventDefault()
+    if (event.target.value)
+      router.push(event.target.value)
   }
 
   const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>): void => {
