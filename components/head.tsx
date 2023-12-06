@@ -36,7 +36,7 @@ export default function Head() {
           <div className="head-line text-md block">search news/blog articles</div>
         </div>
       
-        <div className="head-navi flex flex-col sm:flex-row gap-5">
+        <div className="head-navi flex gap-5">
           
           <div className="head-find">
             <form onSubmit={handleSubmit}>
@@ -47,7 +47,7 @@ export default function Head() {
           
           <select className="head-menu bg-transparent text-white py-2 px-5" onChange={handleMenuChange}>
             <option value="">M E N U</option>
-            <option value="/">home</option>                  
+            <option value="/">home</option>
           </select>
 
         </div>

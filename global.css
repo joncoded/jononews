@@ -28,6 +28,11 @@ main a {
   font-weight: bold;
 }
 
+main a:hover {
+  color: #000000;
+  text-decoration: underline;
+}
+
 [class$="-section"] {
   margin: 20px 0;
 }
