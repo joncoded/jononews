@@ -13,11 +13,10 @@ interface MainProps {
 }
 
 export default async function Main({searchParams}: MainProps) {
-
-  // text, *searchParams, getData  
-  const { page = 1, points = 0 } = searchParams
+ 
+  const { page = 1, points } = searchParams
   const data = await getData('', page - 1, points)
-  const { hits: list } = data    
+  const { hits: list } = data
 
   return (
     <>

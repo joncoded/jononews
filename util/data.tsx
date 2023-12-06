@@ -6,8 +6,6 @@ export async function getData(
 
   const url = `https://hn.algolia.com/api/v1/search_by_date?tags=story&query=${slug}&page=${page}&numericFilters=points>=${points}`  
 
-  console.log("=====", points)
-
   const res = await fetch(url)
 
   if (!res.ok) {
