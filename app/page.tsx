@@ -42,7 +42,7 @@ export default async function Main({searchParams}: MainProps) {
       <nav className="navi-wrap bg-green-500 w-full fixed z-40 p-5 shadow-xl">
         <div className="navi-prop max-w-screen-xl mx-auto">
           <div className="navi-flex flex justify-between items-center gap-5">
-            <h2 className="navi-name text-md md:text-5xl text-black font-bold uppercase">
+            <h2 className="navi-name text-md md:text-3xl text-black font-bold uppercase">
               {queryLabel} 
               {page ? ` / ${page} ` : ''}
             </h2>
