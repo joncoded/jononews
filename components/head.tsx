@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import { site, text } from './text'
 
 export default function Head() {
 
@@ -31,9 +32,12 @@ export default function Head() {
       
         <div className="head-name flex items-center gap-5">
           <h1 className="head-ding text-4xl">
-            <Link href="/"><span aria-hidden="true">📰</span> JONONEWS</Link>            
+            <Link href="/">
+              <span aria-hidden="true" className="mr-2">{site["title emoji"]}</span> 
+              {site["title"]}
+            </Link>            
           </h1>
-          <div className="head-line text-md block">news from the gain-stream media</div>
+          <div className="head-line text-md block">{site["tagline"]}</div>
         </div>
       
         <div className="head-navi flex gap-5">
@@ -48,6 +52,8 @@ export default function Head() {
           <select className="head-menu bg-transparent text-white py-2 px-5" onChange={handleMenuChange}>
             <option value="">M E N U</option>
             <option value="/">home</option>
+            <option value="">{text["menu"]}</option>
+            <option value="/">{text["home"]}</option>
           </select>
 
         </div>

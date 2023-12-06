@@ -1,6 +1,7 @@
 import { Fragment } from "react"
 import { MainDiv } from "../components/main"
 import Link from "next/link"
+import { text } from "../components/text"
 
 async function getData(query: string = '', page: number = 0) {
 
@@ -90,6 +91,7 @@ export default async function Main({searchParams}: MainProps) {
 
           )}
         </div>
+          <p>{text["no items"]}</p>
 
       </MainDiv>
 
