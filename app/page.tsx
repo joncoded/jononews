@@ -18,21 +18,21 @@ async function getData(query: string = '', page: number = 0) {
 
 interface MainProps {
   searchParams: {
-    query?: string,
+    query: string,
     page?: number
   }
 }
 
 export default async function Main({searchParams}: MainProps) {
 
-  const { query, page } = searchParams    
+  const { query = '', page } = searchParams  
   const data = await getData(query, page)  
 
   const getURLHost = (url: string) => {
     return (url) ? new URL(url).host.toString() : ''
   }
 
-  const queryLabel = (query === undefined || query === 'undefined') ? '' : query
+  const queryLabel = (query === undefined || query === '') ? '' : query
   const newerPage = page ? Number(page) - 1 : null
   const olderPage = page ? Number(page) + 1 : 2
 
