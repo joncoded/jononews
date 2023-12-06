@@ -5,7 +5,7 @@ import Link from "next/link"
 async function getData(query: string = '', page: number = 0) {
 
   
-  const url = `https://hn.algolia.com/api/v1/search_by_date?tags=story&query=${query}&page=${page}`
+  const url = `https://hn.algolia.com/api/v1/search_by_date?tags=story&query=${query}&page=${page}&numericFilters=points>=50`
   const res = await fetch(url)
 
   if (!res.ok) {
@@ -39,7 +39,7 @@ export default async function Main({searchParams}: MainProps) {
   return (
     <>
 
-      <nav className="navi-wrap sticky top-0 z-40 p-5 bg-green-500 w-full shadow-xl">
+      <nav className="navi-wrap bg-green-500 w-full fixed z-40 p-5 shadow-xl">
         <div className="navi-prop max-w-screen-xl mx-auto">
           <div className="navi-flex flex justify-between items-center gap-5">
             <h2 className="navi-name text-md md:text-5xl text-black font-bold uppercase">
@@ -65,12 +65,14 @@ export default async function Main({searchParams}: MainProps) {
               
                 <article className="main-item mt-5">
 
-                  <aside className="main-date text-gray-700 text-sm">
-                    {`${hit.created_at.substring(0,10)} ${hit.created_at.substring(11,16)}`} 
-                    <span className="main-host ml-1 text-gray-400">via {getURLHost(hit.url)}</span>
+                  <aside className="main-item-meta text-gray-700 text-sm">
+                    <span className="main-item-date font-bold mr-1">{hit.created_at.substring(0,10)}</span>
+                    <span className="main-item-time mx-1">{`${hit.created_at.substring(11,16)}`}</span>
+                    <span className="main-item-skor mx-1">({hit.points} pts)</span>
+                    <span className="main-item-host ml-1 text-gray-400">via {getURLHost(hit.url)}</span>                    
                   </aside>
                                                   
-                  <h3 className="main-link text-3xl lowercase">
+                  <h3 className="main-link text-3xl lowercase">                    
                     <Link href={hit.url} target="_blank">{hit.title}</Link>
                   </h3>            
                   
