@@ -24,12 +24,23 @@ export const NaviName = (
 }
 
 export const NaviPage = (
-  {platform, slug, newerPage, olderPage} : { platform: string, slug: string; newerPage: number, olderPage: number}
+  {platform, slug, current, points} : { platform?: string, slug?: string; current: number, points: number}
 ) => {
+
+  const newerPage = current ? Number(current) - 1 : 1
+  const olderPage = Number(current) + 1 
+
+  const getURL = (page) => {
+    const pre = platform ? `/${platform}` : ''
+    const sub = slug ? `/${slug}` : ''
+    const pts = points ? `&points=${points}` : ''     
+    return `${pre}${sub}?page=${page}${pts}`
+  }
+
   return (
     <div className="navi-page flex gap-5">
-      { newerPage > 0 && <Link href={`${platform ? `/${platform}` : ''}/${slug}?page=${newerPage}`}>newer</Link>}
-      { olderPage > 0 && <Link href={`${platform ? `/${platform}` : ''}/${slug}?page=${olderPage}`}>older</Link>}
+      { newerPage > 0 && <Link href={getURL(newerPage)}>newer</Link>}
+      { olderPage > 0 && <Link href={getURL(olderPage)}>older</Link>}
     </div>
   )
 }  
