@@ -7,3 +7,11 @@ export const MainDiv = ({children}: any) => {
     </main>
   )
 }
+
+export const MainList = ({children}: any ) => {
+  return (
+    <div className="main-list grid grid-cols-1 gap-1">
+      {children}
+    </div>
+  )
+}

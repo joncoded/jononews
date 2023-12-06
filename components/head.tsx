@@ -18,7 +18,7 @@ export default function Head() {
 
   const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>): void => {
     event.preventDefault()
-    router.push(`?query=${decodeURIComponent(searchTerm)}`)    
+    router.push(`/term/${decodeURIComponent(searchTerm)}`)    
   }
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -50,8 +50,6 @@ export default function Head() {
           </div>
           
           <select className="head-menu bg-transparent text-white py-2 px-5" onChange={handleMenuChange}>
-            <option value="">M E N U</option>
-            <option value="/">home</option>
             <option value="">{text["menu"]}</option>
             <option value="/">{text["home"]}</option>
           </select>
