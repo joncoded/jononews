@@ -31,9 +31,9 @@ export default function Head() {
       
         <div className="head-name flex items-center gap-5">
           <h1 className="head-ding text-4xl">
-            <Link href="/">JONONEWS</Link>            
+            <Link href="/"><span aria-hidden="true">📰</span> JONONEWS</Link>            
           </h1>
-          <div className="head-line text-md block">search news/blog articles</div>
+          <div className="head-line text-md block">news from the gain-stream media</div>
         </div>
       
         <div className="head-navi flex gap-5">
