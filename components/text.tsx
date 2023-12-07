@@ -1,7 +1,7 @@
 export const site = {
   "title emoji": "📰",
   "title" : "JONONEWS", 
-  "tagline" : "simply search and read articles",
+  "tagline" : "simply search and read nerdy articles",
 }
 
 export const text = {
