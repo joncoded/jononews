@@ -1,6 +1,6 @@
 export const MainDiv = ({children}: any) => {
   return (
-    <main className="p-5 mt-16">
+    <main className="p-5">
       <div className="w-screen-xl max-w-screen-xl mx-auto">
         {children}
       </div>
@@ -10,7 +10,7 @@ export const MainDiv = ({children}: any) => {
 
 export const MainList = ({children}: any ) => {
   return (
-    <div className="main-list grid grid-cols-1 gap-1">
+    <div className="main-list grid grid-cols-1 gap-1 mt-16">
       {children}
     </div>
   )

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const PageNavi = ({children}: any) => {
   return (
-    <nav className="navi-wrap bg-green-500 w-full fixed z-40 p-5 shadow-xl">
+    <nav className="navi-wrap bg-green-500 fixed w-full z-40 p-5 shadow-xl">
       <div className="navi-prop max-w-screen-xl mx-auto">
         <div className="navi-flex flex justify-between items-center gap-5">
           {children}
