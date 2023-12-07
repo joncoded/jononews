@@ -23,10 +23,10 @@ export default async function Main({searchParams}: MainProps) {
 
       <PageNavi>
         <NaviName label={text['home']} page={page} />
-        <NaviPage current={page} points={points} />
+        <NaviPage term={``} current={page} points={points} />
       </PageNavi>    
     
-      <MainDiv>  
+      <MainDiv className="my-16">  
         
         { list.length > 0 && 
         

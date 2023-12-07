@@ -1,6 +1,6 @@
-export const MainDiv = ({children}: any) => {
+export const MainDiv = ({children, className}: any) => {
   return (
-    <main className="p-5 my-20">
+    <main className={`p-5 ${className}`}>
       <div className="w-screen-xl max-w-screen-xl mx-auto">
         {children}
       </div>

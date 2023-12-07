@@ -28,8 +28,8 @@ export const NaviPage = (
   {platform, slug, current, term, points = 0, pointsOp, after, before} : { 
     platform?: string, 
     slug?: string, 
-    current: number, 
-    term: string, 
+    current?: number, 
+    term?: string, 
     points?: number,
     pointsOp?: string
     after?: string,

@@ -30,7 +30,7 @@ export default async function Main({params, searchParams}: MainProps) {
         <NaviPage platform="term" slug={slug} current={page} points={points} />
       </PageNavi>    
     
-      <MainDiv>  
+      <MainDiv className="mt-16">  
         
         { list.length > 0 && 
         

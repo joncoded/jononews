@@ -6,7 +6,7 @@ import { text } from "../components/text"
 
 export default async function Error() {
   return (
-    <MainDiv>
+    <MainDiv className="my-16">
       <h2 className="text-7xl ">
         <span className="mr-2" aria-hidden="true">🤷🏻‍♂️</span> 
         500

@@ -31,7 +31,7 @@ export default function Item({item}: ItemProps) {
         <span className="item-host ml-1 text-gray-400">via {getURLHost(url)}</span>                    
       </aside>
 
-      <h3 className="item-link text-3xl lowercase">
+      <h3 className="item-link text-3xl">
         <Link href={url} target="_blank">{title}</Link>
       </h3>            
       

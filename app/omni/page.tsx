@@ -41,7 +41,7 @@ export default async function Omni({searchParams}: OmniProps) {
         <NaviPage platform="omni" term={``} current={page} points={points} pointsOp={pointsOp} after={after} before={before} />
       </PageNavi>    
     
-      <MainDiv> 
+      <MainDiv className="mt-16"> 
 
         { (after !== '' || before !== '') && 
           <div className="text-xl">
