@@ -25,7 +25,7 @@ export const NaviName = (
 }
 
 export const NaviPage = (
-  {platform, slug, current, term, points = 0, pointsOp = ">=", after, before} : { 
+  {platform, slug, current, term, points = 0, pointsOp, after, before} : { 
     platform?: string, 
     slug?: string, 
     current: number, 
