@@ -24,7 +24,7 @@ export default function Item({item}: ItemProps) {
   return (
     <article className="item mt-5">
 
-      <aside className="item-meta text-gray-700 text-sm">
+      <aside className="item-meta text-gray-700 dark:text-gray-200 text-sm">
         <span className="item-date font-bold mr-1">{created_at.substring(0,10)}</span>
         <span className="item-time mx-1">{`${created_at.substring(11,16)}`}</span>
         <span className="item-skor mx-1">({points} pts)</span>

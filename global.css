@@ -28,13 +28,13 @@ main a {
   font-weight: bold;
 }
 
+.dark main a {
+  color: #00cc00;  
+}
+
 main a:hover {
   color: #000000;
   text-decoration: underline;
-}
-
-[class$="-section"] {
-  margin: 20px 0;
 }
 
 footer a {
