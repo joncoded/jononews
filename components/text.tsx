@@ -12,5 +12,6 @@ export const text = {
   "search with keybinding" : "🔎 search (⌘K)",
   "close menu" : "close menu",
   "switch to dark mode" : "switch to dark mode", 
-  "switch to light mode" : "switch to light mode"
+  "switch to light mode" : "switch to light mode", 
+  "back to home page" : "back to home page"
 }
