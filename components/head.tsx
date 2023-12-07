@@ -1,62 +1,85 @@
 'use client'
 
-import { useState } from 'react'
 import Link from "next/link"
-import { useRouter } from "next/navigation"
 import { site, text } from './text'
+import { ChildrenProps } from './prop'
+import { MenuFind } from "./menu-find"
+import { MenuFull } from './menu-full'
 
 export default function Head() {
 
-  const router = useRouter()
-  const [searchTerm, setSearchTerm] = useState('')
-
-  const handleMenuChange = (event: any) => {
-    event.preventDefault()
-    if (event.target.value)
-      router.push(event.target.value)
+  const HeaderFullWidthWrapper = ({children}: ChildrenProps) => {
+    return (
+      <header className={`head-wrap bg-black text-white w-full sticky fixed top-0 z-40 p-5`}>
+        {children}
+      </header>
+    )
   }
 
-  const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>): void => {
-    event.preventDefault()
-    router.push(`/term/${decodeURIComponent(searchTerm)}`)    
+  const HeaderProper = ({children}: ChildrenProps) => {
+    return (
+      <div className={`head-prop max-w-screen-xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-5`}>
+        {children}
+      </div>
+    )
   }
 
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    event.preventDefault()
-    setSearchTerm(event.target.value)
+  const HeaderBrandingWrapper = ({children}: ChildrenProps) => {
+    return (
+      <div className={`head-name flex flex-col md:flex-row items-center gap-1 md:gap-5`}>
+        {children}
+      </div>
+    )
+  }
+
+  const HeaderBrandingName = () => {
+    return (
+      <div className={`head-ding text-4xl`}>
+        <Link href="/">
+          <h1>
+            <span className="head-icon mr-2" aria-hidden="true">{site["title emoji"]}</span> 
+            <span className="head-name">{site["title"]}</span>
+          </h1>
+        </Link>
+      </div>
+    )
+  }
+  
+  const HeaderBrandingTagline = () => {
+    return (
+      <div className="head-line text-md block">{site["tagline"]}</div>
+    )
+  }
+
+  const HeaderNavigationWrapper = ({children}: ChildrenProps) => {
+    return (
+      <div className="head-navi flex items-center gap-5">
+        {children}
+      </div>
+    )
   }
 
   return (
-    <header className="head-wrap bg-black text-white w-full sticky fixed top-0 z-40 p-5">
-      <div className="head-prop max-w-screen-xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-5">
+    <HeaderFullWidthWrapper>      
       
-        <div className="head-name flex items-center gap-5">
-          <h1 className="head-ding text-4xl">
-            <Link href="/">
-              <span aria-hidden="true" className="mr-2">{site["title emoji"]}</span> 
-              {site["title"]}
-            </Link>            
-          </h1>
-          <div className="head-line text-md block">{site["tagline"]}</div>
-        </div>
+      <HeaderProper>
+        
+        <HeaderBrandingWrapper>
+
+          <HeaderBrandingName />          
+          <HeaderBrandingTagline />
+
+        </HeaderBrandingWrapper>      
+        
+        <HeaderNavigationWrapper>        
+        
+          <MenuFind inputName="desktop-search-in-nav" placeholder={text['search with keybinding']} />          
+          <MenuFull />
+        
+        </HeaderNavigationWrapper>
       
-        <div className="head-navi flex gap-5">
-          
-          <div className="head-find">
-            <form onSubmit={handleSubmit}>
-              <input type="text" className="p-2 text-black" placeholder="🔎 search" onChange={handleSearchChange} />
-              <input type="submit" className="p-2 px-5 bg-green-500 text-white" value="go" />
-            </form>
-          </div>
-          
-          <select className="head-menu bg-transparent text-white py-2 px-5" onChange={handleMenuChange}>
-            <option value="">{text["menu"]}</option>
-            <option value="/">{text["home"]}</option>
-          </select>
+      </HeaderProper>
 
-        </div>
-
-      </div>
-    </header>
+    </HeaderFullWidthWrapper>
   )
 }

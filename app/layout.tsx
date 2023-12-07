@@ -1,6 +1,7 @@
 import "../global.css"
 import Head from "../components/head"
 import Tail from '../components/tail'
+import { ThemeProvider } from "../util/dark"
 
 export const metadata = {
   title: 'jononews',
@@ -15,9 +16,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Head />        
-        {children}        
-        <Tail />
+        <ThemeProvider attribute={`class`} defaultTheme={`light`} enableSystem>
+          <Head />        
+          {children}        
+          <Tail />
+        </ThemeProvider>
       </body>
     </html>
   )
