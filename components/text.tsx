@@ -13,5 +13,9 @@ export const text = {
   "close menu" : "close menu",
   "switch to dark mode" : "switch to dark mode", 
   "switch to light mode" : "switch to light mode", 
-  "back to home page" : "back to home page"
-}
+  "back to home page" : "back to home page",
+  "points" : "points",
+  "page" : "page", 
+  "after" : "after",
+  "before" : "before"
+} 

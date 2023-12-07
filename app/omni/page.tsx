@@ -3,34 +3,53 @@ import { PageNavi, NaviName, NaviPage } from "../../components/navi"
 import { MainDiv, MainList } from "../../components/main"
 import Item from "../../components/item"
 import { text } from "../../components/text"
-import { getData } from "../../util/data"
+import { getData, getNextYear, getUnixDate } from "../../util/data"
 
-interface MainProps {
-  params: {
-    slug: string
-  },
+interface OmniProps {
   searchParams: {    
+    term?: string,
     page?: number,
-    points?: number
+    points?: number,
+    pointsOp?: '>=' | '<=' | '==',
+    after: string,
+    before: string,
   }
 }
 
-export default async function Main({params, searchParams}: MainProps) {
+export default async function Omni({searchParams}: OmniProps) {
 
-  const { slug = '' } = params  
-  const { page = 1, points = 0 } = searchParams
-  const data = await getData(slug, page - 1, points)
+  const { 
+    term = '', 
+    page = 1, 
+    points = 0, 
+    pointsOp = '>=', 
+    after = '', 
+    before = ''
+  } = searchParams  
+
+  const afterUnix = getUnixDate(after) || 0
+  const beforeUnix = getUnixDate(before) || getNextYear()
+  const data = await getData(term, page - 1, points, pointsOp, afterUnix, beforeUnix)
   const { hits: list } = data    
   
   return (
     <>
 
       <PageNavi>
-        <NaviName label={slug} page={page} />
-        <NaviPage platform="term" slug={slug} current={page} points={points} />
+        <NaviName label={`${term === '' ? 'all' : term} ${pointsOp} ${points} ${text['points']}`} page={page} />
+        <NaviPage platform="omni" term={``} current={page} points={points} pointsOp={pointsOp} after={after} before={before} />
       </PageNavi>    
     
       <MainDiv>  
+
+        { (after !== '' || before !== '') && 
+          <div className="text-xl">
+            <h3 className="flex gap-5">
+              {after && <> {text['after']}: <strong>{after}</strong> </>} 
+              {before && <> {text['before']}: <strong>{before}</strong> </>} 
+            </h3>
+          </div>
+        }
         
         { list.length > 0 && 
         

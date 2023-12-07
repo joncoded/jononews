@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { text } from "./text";
 
 export const PageNavi = ({children}: any) => {
   return (
@@ -18,23 +19,36 @@ export const NaviName = (
   return (
     <h2 className="navi-name text-md md:text-3xl text-black font-bold uppercase">
       {label} 
-      {page ? ` / ${page} ` : ''}
+      {page ? ` / ${text['page']} ${page} ` : ''}
     </h2>
   )
 }
 
 export const NaviPage = (
-  {platform, slug, current, points} : { platform?: string, slug?: string; current: number, points: number}
+  {platform, slug, current, term, points = 0, pointsOp = ">=", after, before} : { 
+    platform?: string, 
+    slug?: string, 
+    current: number, 
+    term: string, 
+    points?: number,
+    pointsOp?: string
+    after?: string,
+    before?: string,
+  }
 ) => {
 
   const newerPage = current ? Number(current) - 1 : 1
   const olderPage = Number(current) + 1 
 
   const getURL = (page) => {
-    const pre = platform ? `/${platform}` : ''
-    const sub = slug ? `/${slug}` : ''
-    const pts = points ? `&points=${points}` : ''     
-    return `${pre}${sub}?page=${page}${pts}`
+    const f = platform ? `/${platform}` : ''
+    const s = slug ? `/${slug}` : ''    
+    const t = term ? `&term=${term}` : ''
+    const p = points ? `&points=${points}` : ''
+    const o = pointsOp ? `&pointsOp=${pointsOp}` : ''
+    const a = after ? `&after=${after}` : ''
+    const b = before ? `&before=${before}` : ''
+    return `${f}${s}?page=${page}${t}${p}${o}${a}${b}`
   }
 
   return (
