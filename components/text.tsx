@@ -17,5 +17,10 @@ export const text = {
   "points" : "points",
   "page" : "page", 
   "after" : "after",
-  "before" : "before"
+  "before" : "before",
+  "search term" : "search term", 
+  "minimum points" : "minimum upvotes",
+  "article dated on or after" : "dated on/after", 
+  "article dated on or before" : "dated on/before"
+
 } 
