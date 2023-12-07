@@ -4,6 +4,7 @@ import { MainDiv, MainList } from "../../components/main"
 import Item from "../../components/item"
 import { text } from "../../components/text"
 import { getData, getNextYear, getUnixDate } from "../../util/data"
+import { OmniForm } from "./form"
 
 interface OmniProps {
   searchParams: {    
@@ -36,11 +37,11 @@ export default async function Omni({searchParams}: OmniProps) {
     <>
 
       <PageNavi>
-        <NaviName label={`${term === '' ? 'all' : term} ${pointsOp} ${points} ${text['points']}`} page={page} />
+        <NaviName label={`${term === '' ? 'OMNI' : term} ${pointsOp} ${points} ${text['points']}`} page={page} />
         <NaviPage platform="omni" term={``} current={page} points={points} pointsOp={pointsOp} after={after} before={before} />
       </PageNavi>    
     
-      <MainDiv>  
+      <MainDiv> 
 
         { (after !== '' || before !== '') && 
           <div className="text-xl">
@@ -49,7 +50,17 @@ export default async function Omni({searchParams}: OmniProps) {
               {before && <> {text['before']}: <strong>{before}</strong> </>} 
             </h3>
           </div>
-        }
+        } 
+
+        <h3 className="text-5xl"></h3>
+
+        <OmniForm 
+          currentTerm={term} 
+          currentPoints={points} 
+          currentAfter={after} 
+          currentBefore={before} 
+        />
+         
         
         { list.length > 0 && 
         
