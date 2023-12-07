@@ -68,3 +68,10 @@ export function getUnixDate(date) {
   return unixDate
 
 }
+
+export function getTodaysDate() {
+
+  let today = new Date()
+  return today.toISOString().split('T')[0]
+
+}
