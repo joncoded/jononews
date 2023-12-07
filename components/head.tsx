@@ -28,7 +28,7 @@ export default function Head() {
 
   return (
     <header className="head-wrap bg-black text-white w-full sticky fixed top-0 z-40 p-5">
-      <div className="head-prop max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center gap-5">
+      <div className="head-prop max-w-screen-xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-5">
       
         <div className="head-name flex items-center gap-5">
           <h1 className="head-ding text-4xl">
