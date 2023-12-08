@@ -84,7 +84,7 @@ export function MenuFull() {
   const MenuHead = ({children}: ChildrenProps) => {
     return (
       <div className={`menu-head 
-        flex flex-col sm:flex-row sm:justify-between items-center mb-10
+        flex flex-col sm:flex-row sm:justify-between items-center
       `}>
         {children}
       </div>
@@ -93,10 +93,10 @@ export function MenuFull() {
 
   const MenuHeading = () => {
     return (
-      <div className={`menu-heading`}>
+      <h1 className={`menu-heading`}>
         <span className={`text-3xl font-bold mr-2 uppercase`}>{site['title']}</span>
         <span className={`text-xl font-light`}>{text['menu']}</span>
-      </div>
+      </h1>
     )
   }
 
@@ -116,7 +116,7 @@ export function MenuFull() {
     return (
       <div 
         className={`menu-options 
-          flex justify-right gap-5
+          flex justify-right gap-5 mb-10
         `}
       >
         {children}
@@ -228,7 +228,7 @@ export function MenuFull() {
                   />
                 </MenuFindWrapper>
                 <MenuContent />
-                <MenuFindWrapper className={`hidden md:block`}>
+                <MenuFindWrapper className={`hidden md:block pb-16 w-full`}>
                   <MenuFind                     
                     inputName={`desktop-search-in-menu`} 
                     placeholder={text['search with keybinding']} 
