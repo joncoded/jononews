@@ -6,14 +6,14 @@ import { MainDiv } from '../../components/main'
 
 export default function Main() {
 
-  const defaultPointsThreshold = localStorage.getItem("jn-points") ?? 0
-  const [pointsThreshold, setPointsThreshold] = useState(defaultPointsThreshold)
+  // const defaultPointsThreshold = localStorage.getItem("jn-points") ?? 0
+  const [pointsThreshold, setPointsThreshold] = useState(0)
   // const [topicsMenu, setTopicsMenu] = useState([])
 
   const handlePointInputChange = (event: React.ChangeEvent<HTMLSelectElement>): void => {
     event.preventDefault()
     setPointsThreshold(Number(event.target.value))
-    localStorage.setItem("jn-points", event.target.value)
+    // localStorage.setItem("jn-points", event.target.value)
     // setCookie("jn-points", event.target.value, 30)
     
   }
