@@ -1,7 +1,7 @@
 export async function getData(
   slug: string = '', 
   page: number = 0, 
-  points: number = 50,
+  points: number = 10,
   pointsOp: string = '>=',
   after: number = 0,
   before: number = getNextYear()
@@ -16,7 +16,6 @@ export async function getData(
   const earliest = `created_at_i>=${after}`
   const latest = `created_at_i<=${before}`
   const url = `${root}${endpoint}?${tag}${term}${pg}&numericFilters=${pts},${earliest},${latest}`
-
   const res = await fetch(url)
 
   if (!res.ok) {
