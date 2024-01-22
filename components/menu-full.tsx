@@ -169,25 +169,7 @@ export function MenuFull() {
     return (
       <ul className="menu-list list-none mx-auto py-10" onClick={closeMenu}>
         <li className="text-3xl"><Link href="/about">About</Link></li>
-        <li className="text-3xl"><Link href="/omni">Omnisearch</Link></li>
-        <li className="text-3xl"><Link href="/year/2023">2023</Link></li>
-        <li className="text-3xl"><Link href="/year/2022">2022</Link></li>
-        <li className="text-3xl"><Link href="/year/2021">2021</Link></li>
-        <li className="text-3xl"><Link href="/year/2020">2020</Link></li>
-        <li className="text-3xl"><Link href="/year/2019">2019</Link></li>
-        <li className="text-3xl"><Link href="/year/2018">2018</Link></li>
-        <li className="text-3xl"><Link href="/year/2017">2017</Link></li>
-        <li className="text-3xl"><Link href="/year/2016">2016</Link></li>
-        <li className="text-3xl"><Link href="/year/2015">2015</Link></li>
-        <li className="text-3xl"><Link href="/year/2014">2014</Link></li>
-        <li className="text-3xl"><Link href="/year/2013">2013</Link></li>
-        <li className="text-3xl"><Link href="/year/2012">2012</Link></li>
-        <li className="text-3xl"><Link href="/year/2011">2011</Link></li>
-        <li className="text-3xl"><Link href="/year/2010">2010</Link></li>
-        <li className="text-3xl"><Link href="/year/2009">2009</Link></li>
-        <li className="text-3xl"><Link href="/year/2008">2008</Link></li>
-        <li className="text-3xl"><Link href="/year/2007">2007</Link></li>
-        <li className="text-3xl"><Link href="/year/2006">2006</Link></li>
+        <li className="text-3xl"><Link href="/omni">Omnisearch</Link></li>        
       </ul>
     )
   }
